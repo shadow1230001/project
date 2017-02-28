@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<title th:text="#{page.editor.title}"></title>
+
+	<th:block th:include="template :: head"></th:block>
+
+	<link rel="stylesheet"  th:src="@{~/css/editor/ng-tags-input.min.css}">
+	<link rel="stylesheet"  th:src="@{~/css/editor/ng-tags-input.bootstrap.min.css}">
+</head>
+<body data-ng-app="editor" data-ng-controller="editorController">
+	<th:block th:replace="template :: navbar"></th:block>
+<!-- {{creative}} -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<th:block
+					th:replace="template :: header( title=#{page.editor.header.title}, description=#{page.editor.header.description} )"></th:block>
+				<ol class="breadcrumb">
+					<li><a th:text="#{breadcrumbs.home}" th:href="@{~/}"></a></li>
+					<li><a th:text="#{breadcrumbs.personal}"
+						th:href="@{~/personal/}"></a></li>
+					<li th:text="#{breadcrumbs.personal.editor}" class="active"></li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<div data-ng-show="alert.show" class="col-sm-offset-3 col-sm-6">
+				<div class="alert alert-{{alert.level | lowercase }}" role="alert">
+					<button type="button" class="close" data-ng-click="closeAlert()"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<strong>{{alert.title}}</strong> {{alert.description}}
+					<ul>
+						<li data-ng-repeat="msg in alert.messages">{{msg}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form th:action="@{''}" name="creativeForm" method="post">
+							<div class="form-group">
+								<label for="creativeName" th:text="#{page.editor.form.creativename}"></label> <input
+									type="text" required="required" class="form-control" data-ng-model="creative.name"
+									th:placeholder="#{page.editor.form.creativename.placeholder}">
+							</div>
+							<div class="form-group">
+								<label>Tags</label>
+								<tags-input required="required" data-ng-model="creative.tags">
+        							<auto-complete source="loadTags($query)"></auto-complete>
+    							</tags-input>
+							</div>
+							<div class="form-group">
+								<label th:text="#{page.editor.form.description.label}" for="description"></label> <input required type="text"
+									class="form-control" id="description" for="creativeForm" required data-ng-model="creative.description" th:placeholder="#{page.editor.form.description.placeholder}">
+							</div>
+							<input required type="hidden" name="creative" value="{{creative}}"></input>
+							<a th:text="#{page.editor.form.postcreative}" style="width:100%;" ng-click="postCreative()" class="btn btn-success" ></a>
+						</form>
+					</div>
+				</div>
+			</div>
+		<div class="col-sm-9">
+				<div class="row" data-ng-repeat="chapter in chapters">
+<!--				{{chapter}}  -->	
+					<div th:inline="text" class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<span class="label label-success">[[#{page.editor.chapter.title}]] {{chapter.id}}</span><span
+									data-ng-click="removeChapter(chapter.id)" th:title="#{page.editor.chapter.removechapter}"
+									class="glyphicon glyphicon-remove pull-right"
+									aria-hidden="true"></span>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<label>Chapter title</label>
+   						  		<input for="creativeForm" required type="text" class="form-control" data-ng-model="chapter.title" placeholder="Just a title">	
+							</div>
+							<div class="form-group">
+								<label>Tags</label>
+								<tags-input for="creativeForm" data-ng-model="chapter.tags">
+        							<auto-complete source="loadTags($query)"></auto-complete>
+    							</tags-input>
+							</div>
+							<hr>
+							<h4 class="text-center"><strong>Preview</strong></h4>
+							<p sd-model-to-html="chapter.content">{{preview + chapter.id}}</p>
+						</div>
+						<div class="panel-footer">
+							<h4 class="text-center"><strong>Editor</strong></h4>
+							<textarea required data-ng-model="chapter.content" class="form-control animate msd-elastic: \n;"></textarea>
+						</div>
+					</div>
+				</div>
+				{{chapter.content}}
+				<div class="row">
+					<button type="submit" data-ng-click="addChapter()"
+						class="btn btn-primary pull-right" th:text="#{page.editor.addchapter}"></button>
+				</div>
+		</div>
+				</div>
+	</div>
+	<th:block th:replace="template :: footer"></th:block>
+	<th:block th:replace="template :: scripts"></th:block>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+	<script type="text/javascript" th:src="@{~/js/editor/ng-tags-input.min.js}"></script>
+	<script th:src="@{~/js/editor/elastic.js}"></script>
+	<script th:src="@{~/js/editor/showdown.min.js}"></script>
+	<script th:src="@{~/js/editor/ng-showdown.min.js}"></script>
+	<script th:src="@{~/js/editor/editor.js}"></script>
+</body>
+</html>

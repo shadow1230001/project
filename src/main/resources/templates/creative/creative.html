@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title th:utext="${#strings.capitalize( creative.name )}"></title>
+
+	<th:block th:include="template :: head"></th:block>
+</head>
+<body data-ng-app="viewer">
+<th:block th:replace="template :: navbar"></th:block>
+<div class="container">
+
+	<div class="page-header">
+  		<h1 th:text="${#strings.capitalize( creative.name )}"></h1>
+  		<div class="row">
+			<a class="text-default" th:with="root=@{~/tag/}" th:each=" tag : ${creative.tags}" th:href="@{ ${root} + ${tag.address} }"><span class="label label-default" th:text="${tag.name}"></span></a>	
+  		</div>
+	</div>
+	<ol class="breadcrumb">
+  		<li><a th:text="#{breadcrumbs.home}" th:href="@{~/}"></a></li>
+  		<li class="active" th:text="#{breadcrumbs.creatives}"></li>
+  		<li class=""><a th:href="@{''}" th:text="${ #strings.toLowerCase( creative.name )}"></a></li>
+	</ol>
+	<div class="row">
+		<div data-ng-controller="chapterController" class="col-md-12">
+			<div th:each=" chapter : ${chapters} " class="panel panel-default">
+				<div class="panel-heading">
+					<h5 class="text-success" th:inline="text"><span class="label label-success">[[#{page.editor.chapter.title}]] [[${chapter.chapterOrder}]]</span> [[${chapter.title}]]</h5>
+				</div>
+				<div class="panel-body">
+					<th:block th:utext="${@pegdown.markdownToHtml( chapter.content )}"></th:block>
+					<div class="row">
+						<div class="col-md-10">
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<a class="text-default" th:with="root=@{~/tag/}" th:each=" tag : ${chapter.tags}" th:href="@{ ${root} + ${tag.address} }"><span class="label label-default" th:text="${tag.name}">Lorem</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<th:block th:replace="template :: footer"></th:block>
+	<th:block th:replace="template :: scripts"></th:block>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>	
+	<script th:src="@{~/js/editor/showdown.min.js}"></script>
+	<script th:src="@{~/js/editor/ng-showdown.min.js}"></script>
+	<script th:src="@{~/js/creative/viewer.js}"></script>	
+</body>
+</html>

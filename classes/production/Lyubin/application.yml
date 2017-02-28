@@ -1,0 +1,37 @@
+# Social
+spring:
+  social:
+    facebook:
+      app-id: 218707801896081
+      app-secret: 6fc093f4c4b92331d8afb2181d384afc
+    twitter:
+      app-id: n7jNr3HbkrGB0VJRG63hGJlNo
+      app-secret: sqCUUof5qAr3PkeAi6iDtJkgVEONcLhh2kvMerhv4IiN51O7PL
+    linkedin:
+      app-id: 7809an3x741o1c
+      app-secret: GfZOXTQHP2JhEdSW
+    vk:
+      app-id: 5701213
+      app-secret: g6vpcmeRH4WGaEvnd0zD
+      redirect-uri: http://localhost:8080/auth/vk
+# SQL
+  datasource:
+    url: jdbc:mysql://localhost:3306/simote?useSSL=false
+    username: root
+    password: root
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  thymeleaf:
+    mode: LEGACYHTML5
+    
+  messages:
+    basename: i18n/messages

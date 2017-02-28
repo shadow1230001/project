@@ -1,2 +1,2 @@
-# project
-my first project
+# Lyubin
+Itransition final project

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="#{page.profile.settings.title}"></title>
+		<th:block th:include="template :: head"> </th:block>
+	</head>
+<body>
+	<th:block th:replace="template :: navbar"></th:block>
+
+	<div class="container">
+		<div class="col-md-8 col-md-offset-2">
+			<th:block th:replace="template :: header( title=#{page.profile.settings.header}, description=#{page.profile.settings.header.description} )"></th:block>
+			<ol class="breadcrumb">
+				<li><a th:text="#{breadcrumbs.home}" th:href="@{~/}"></a></li>
+				<li><a th:text="#{breadcrumbs.personal}"
+					th:href="@{~/personal/}"></a></li>
+				<li th:text="#{breadcrumbs.personal.settings}" class="active"></li>
+			</ol>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default">
+  				<div class="panel-body">
+					<form th:action="@{''}" th:object="${settingsForm}" method="post">
+						<div class="form-group" th:classappend="${#fields.hasErrors('email')}? has-error" >
+    						<label th:text="#{page.profile.settings.email.label}" for="email">Email</label>
+    						<input readonly type="email" class="form-control" th:field="*{email}" >
+    						<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Incorrect</p>
+  						</div>
+  						<div class="row">
+  							<div class="col-md-5 col-md-offset-1">
+  								<div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? has-error">
+  									<label th:text="#{page.profile.settings.firstname.label}" for="firstname"></label>
+    								<input type="text" class="form-control" th:field="*{firstName}">
+    								<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">Incorrect</p>
+  								</div>
+  							</div>
+  							<div class="col-md-5 col-md-offset-1">
+  								<div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? has-error">
+  									<label th:text=#{page.profile.settings.lastname.label} for="lastname"></label>
+    								<input type="text" class="form-control" th:field="*{lastName}">	
+    								<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">Incorrect</p>
+  								</div>
+  							</div>
+  						</div>
+						<div class="form-group" th:classappend="${#fields.hasErrors('nickname')}? has-error">
+  							<label th:text="#{page.profile.settings.nickname.label}" for="nickname"></label>
+    						<input readonly type="text" class="form-control" th:field="*{nickname}">
+    						<p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="text-danger">Incorrect</p>
+  						</div>
+  						<div class="form-group" th:classappend="${#fields.hasErrors('theme')}? has-error">
+  							<label th:text="#{page.profile.settings.themes.label}" th:for="*{theme}"></label>
+							<select th:field="*{theme}" class="form-control">
+								<option th:value="${currentTheme.code}" th:text="#{${currentTheme.name}}"></option>
+                				<option th:each="th : ${siteThemes}" th:value="${th.code}" th:text="#{${th.name}}"></option>
+                			</select>
+						</div>
+						<div class="form-group" th:classappend="${#fields.hasErrors('lang')}? has-error">
+  							<label th:text="#{page.profile.settings.language.label}" th:for="*{lang}"></label>
+							<select th:field="*{lang}" class="form-control">
+								<option th:value="${currentLang.code}" th:text="${currentLang.name}"></option>
+                				<option th:each="th : ${siteLanguages}" th:value="${th.code}" th:text="${th.name}"></option>
+                			</select>
+						</div>
+						<!-- 
+  						<div class="form-group" th:classappend="${#fields.hasErrors('lang')}? has-error">
+  							<label th:text="#{page.profile.settings.language.label}" th:for="*{lang}"></label>
+							<select th:field="*{lang}" class="form-control">
+								<option th:value="${currentLang}" th:text="${currentLang.name}"></option>
+                				<option th:each="lang : ${siteLanguages}" th:value="${lang.code}"  th:text="${lang.name}"></option>
+                			</select>
+						</div> -->
+  						<button type="submit" th:text="#{page.profile.settings.updateprofile}" class="btn btn-success pull-right"></button>
+					</form>
+  				</div>
+			</div>
+		</div>
+		<th:block th:include="template :: footer"></th:block>
+	</div>
+	<th:block th:include="template :: scripts"></th:block>
+</body>
+</html>

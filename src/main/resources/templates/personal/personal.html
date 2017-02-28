@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title th:text="${ #strings.capitalize( #authentication.principal.user.nickname) }"></title>
+
+	<th:block th:include="template :: head"></th:block>
+</head>
+<body th:with="requestedUser=${#authentication.principal.user}">
+<th:block th:replace="template :: navbar"></th:block>
+
+<div class="container">
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">		
+			<div class="panel panel-default">
+  				<div class="panel-body">
+  					<div class="row">
+  						<div class="col-md-4">
+  							<img th:src="@{~/img/avatar/sarkhad.png}" style="width:140px;height:140px; center-block; margin-bottom: 10px;" alt="Аватар" class="img-circle center-block">
+  							<a class="btn btn-default center-block" href="#" th:text="#{page.userprofile.card.upload}" role="button"></a>
+ 						</div>
+  						<div class="col-md-8">
+  						 					<h4><span th:inline="text" class="text-success">[[${requestedUser.firstName}]] [[${requestedUser.lastName}]]</span> <strong>@</strong> <a style="text-primary" th:with="root=@{~/user/}" th:href="${root} + ${requestedUser.nickname}" th:text="${requestedUser.nickname}"></a></h4>
+  						 					<span id="status">I don't care if you don't know SQL &copy; Pavel Lebedev</span>
+  						 					<table th:inline="text" class="table">
+												<thead>
+													<tr>
+														<th>[[#{page.userprofile.card.stat.creativesamount}]]</th>
+														<th>[[#{page.userprofile.card.stat.comments}]]</th>
+														<th>[[#{page.userprofile.card.stat.following}]]</th>
+														<th>[[#{page.userprofile.card.stat.subscribers}]]</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="text-center">
+														<td th:text="${ #lists.size( creatives ) }"></td>
+														<td>0</td>
+														<td>0</td>
+														<td>0</td>
+													</tr>
+												</tbody>
+											</table>
+											<hr>
+											<img th:each="award : ${awards}" style="width:40px;height:40px;" th:with="root = @{~/img/medal/}" th:src="${root} + #{${award.codename}} + .svg" th:title="#{${award.name}}" th:alt="#{${award.name}}" class="img-circle">
+  						</div>
+  					</div>
+  				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<ol class="breadcrumb">
+				<li><a th:text="#{breadcrumbs.home}" th:href="@{~/}"></a></li>
+				<li th:text="#{breadcrumbs.personal}" class="active"></li>
+			</ol>
+		</div>
+	</div>
+
+<div class="page-header">
+  <h1 th:text="#{page.userprofile.header.creatives}"></h1>
+</div>
+<h6 th:if="${#lists.isEmpty( creatives )}" class="text-center" th:text="#{page.userprofile.comments.creativesnotfound}"></h6>
+	<div th:unless="${#lists.isEmpty( creatives )}" class="row">
+		<div class="col-md-12">
+			<th:block th:each=" c : ${creatives}">
+				<th:block  th:replace="template :: creativePanel(${c})"></th:block>
+			</th:block>
+		</div>
+	</div>
+<div class="page-header">
+  <h1 th:text="#{page.userprofile.comments.header}"></h1>
+</div>
+<h6 class="text-center" th:text="#{page.userprofile.comments.commentsnotfound}"></h6>
+</div>
+	<th:block th:replace="template :: footer"></th:block>
+	<th:block th:replace="template :: scripts"></th:block>
+</body>
+</html>

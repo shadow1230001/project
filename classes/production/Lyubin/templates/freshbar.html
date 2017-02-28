@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title th:text="#{page.title.freshbar}"></title>
+<th:block th:include="template :: head"></th:block>
+
+</head>
+<body>
+	<th:block th:replace="template :: navbar"></th:block>
+
+	<div class="container">
+		<div class="col-md-12">
+			<th:block
+				th:replace="template :: header( #{page.freshbar.header}, #{page.freshbar.header.description})"></th:block>
+		</div>
+		<div class="row">
+			<div class="col-md-9">
+				<ol class="breadcrumb">
+					<li><a th:text="#{breadcrumbs.freshbar}" th:href="@{~/}"></a></li>
+				</ol>
+				<th:block th:each=" c : ${creatives}">
+					<th:block  th:replace="template :: creativePanel(${c})"></th:block>
+				</th:block>
+				
+			<div class="center-block">
+				<nav aria-label="...">
+					<ul class="pager">
+						<li th:classappend="${!creatives.hasPrevious()} ? disabled" class="previous"><a th:href="${creatives.hasPrevious()} ? @{''(page=${creatives.getNumber()-1})} : ${'#'}"><span
+								aria-hidden="true">&larr;</span> Newer</a></li>
+						<li th:inline="text"><a>[[${creatives.getNumber() + 1}]] | [[${creatives.getTotalPages()}]]</a></li>
+						<li th:classappend="${!creatives.hasNext()} ? disabled" class="next"><a th:href="${creatives.hasNext()} ? @{''(page=${creatives.getNumber()+1})} : ${'#'}"><span
+								aria-hidden="true">&rarr;</span> Older</a></li>
+					</ul>
+				</nav>
+
+			</div>
+
+			</div>
+			<div class="col-md-3">
+				<div sec:authorize="!isAnonymous()" class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<a
+								th:text="${ #strings.capitalize( #authentication.principal.user.nickname)}"
+								th:href="@{~/personal}"></a>
+						</h3>
+					</div>
+					<div class="panel-body"></div>
+					<div class="panel-footer">
+						<a class="btn btn-success" style="width: 100%;" th:inline="text"
+							th:href="@{~/personal/editor}" role="button">[[#{page.index.panel.profile.addpost}]]
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"
+							th:text="#{page.index.panel.tagscloud.title}"></h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<canvas class="center-block" width="260" height="300"
+								id="tagsCloud"> 
+							<ul> 
+								<li th:each=" tag : ${tags}"><a th:with="root=@{~/tags/}"
+										th:href="${root} + ${tag.address}" th:text="${tag.name}"
+										target="_blank"></a></li>
+							</ul> 
+						</canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<th:block th:include="template :: footer"></th:block>
+	</div>
+	<th:block th:include="template :: scripts"></th:block>
+	<script th:src="@{/js/jquery.tagcanvas.min.js}"></script>
+	<script>
+		$(document).ready(function() {
+			$('#tagsCloud').tagcanvas({
+				textColour : '#5cb85c',
+				outlineThickness : 1,
+				maxSpeed : 0.03,
+				depth : 0.9
+			})
+		});
+	</script>
+</body>
+</html>

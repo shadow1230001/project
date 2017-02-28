@@ -1,0 +1,37 @@
+# Social
+spring:
+  social:
+    facebook:
+      app-id:1786413168344572
+      app-secret:26250b6f01efbb7674a935c4c7de468b
+    twitter:
+      app-id:mNEwtnt0584eEKNgprx1Xsk1W
+      app-secret:OXTnEeAyEbgzeEbMHVagRsAGNAsUgUcT8iD9zNmobLvGSrH0LT
+      vk:qwerty
+      app-id:5897956
+      app-secret:bc9cff0bbc9cff0bbcc1540d41bcc501efbbc9cbc9cff0be428f54eacd91f76283952a4
+      redirect-uri:http://localhost:8080/auth/vk
+# SQL
+  datasource:
+    url:jdbc:mysql://localhost:3306/kursach2?useSSL=false
+    username:root
+    password:14031984qwerty
+    testWhileIdle:true
+    validationQuery:SELECT 1
+  jpa:
+    show-sql:true
+    generate-ddl:true
+   hibernate:
+      ddl-auto:create-drop
+
+
+#      naming:
+#        strategy:org.hibernate.cfg.ImprovedNamingStrategy
+#    properties:
+#      hibernate:
+#        dialect:org.hibernate.dialect.MySQL5Dialect
+  thymeleaf:
+    mode:LEGACYHTML5
+    
+  messages:
+    basename:i18n/messages
