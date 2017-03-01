@@ -4,7 +4,6 @@ import org.pegdown.PegDownProcessor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.ui.context.ThemeSource;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
@@ -60,7 +59,6 @@ public class LyubinApplication {
     }
     
     @Bean("pegdown")
-    @Scope("SINGLETON")
     public PegDownProcessor pegdown() {
     	PegDownProcessor pegDownProcessor = new PegDownProcessor();  	
     	return pegDownProcessor;

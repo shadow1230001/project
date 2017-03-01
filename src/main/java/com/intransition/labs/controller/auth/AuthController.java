@@ -1,20 +1,9 @@
 package com.intransition.labs.controller.auth;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.intransition.labs.service.SecurityService;
-import com.intransition.labs.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.intransition.labs.service.SecurityService;
+import com.intransition.labs.service.UserService;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
@@ -22,6 +11,16 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.UserAuthResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.lang.reflect.Field;
 
 @Controller
 public class AuthController {
@@ -64,7 +63,7 @@ public class AuthController {
 			UserAuthResponse authResponse = getAuthResponseFromJson( new Gson().fromJson(response, VKResponse.class ) );
 			UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccessToken());			
 			
-			if( email.isEmpty() || email == null ) { 
+			if( email == null || email.isEmpty() ) {
 				return "redirect:/";
 			}
 			

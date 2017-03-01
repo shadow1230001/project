@@ -10,12 +10,11 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
+apply plugin: 'war'
 apply plugin: 'spring-boot'
 
 jar {
-	baseName = 'org.itransition.labs'
+	baseName = 'org.intransition.labs'
 	version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -46,5 +45,5 @@ dependencies {
 //	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('mysql:mysql-connector-java')
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+
 }
