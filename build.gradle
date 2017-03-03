@@ -30,7 +30,7 @@ dependencies {
 	compile("org.springframework.social:spring-social-config")
 	compile("org.springframework.social:spring-social-facebook")
 	compile("org.springframework.social:spring-social-twitter")
-
+	compile group: 'com.vk.api', name: 'sdk', version: '0.4.3'
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-validation')
@@ -42,6 +42,7 @@ dependencies {
 	compile('commons-validator:commons-validator:1.4.0')
 	compile('org.pegdown:pegdown:1.6.0')
 	compile ('com.vk.api:sdk:0.3.5')
+	compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.22'
 //	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('mysql:mysql-connector-java')
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')

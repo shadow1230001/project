@@ -59,7 +59,7 @@ var editor = angular.module('editor', ['ngTagsInput', "ng-showdown", 'monospaced
 		    '\n- **second**' +
 		    '\n- third' +
 		    '\n' +
-		    '\n[1]: http://daringfireball.net/projects/markdown/syntax';
+		    '\n[1]:  ';
 			
 			
 			$scope.chapters[ id ] = $scope.newChapter;

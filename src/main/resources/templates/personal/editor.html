@@ -82,20 +82,20 @@
 								<label>Chapter title</label>
    						  		<input for="creativeForm" required type="text" class="form-control" data-ng-model="chapter.title" placeholder="Just a title">	
 							</div>
-							<div class="form-group">
+							<!--<div class="form-group">
 								<label>Tags</label>
 								<tags-input for="creativeForm" data-ng-model="chapter.tags">
         							<auto-complete source="loadTags($query)"></auto-complete>
     							</tags-input>
-							</div>
-							<hr>
+							</div>-->
+							<!--<hr>
 							<h4 class="text-center"><strong>Preview</strong></h4>
-							<p sd-model-to-html="chapter.content">{{preview + chapter.id}}</p>
+							<p sd-model-to-html="chapter.content">{{preview + chapter.id}}</p>-->
 						</div>
-						<div class="panel-footer">
+						<!--<div class="panel-footer">
 							<h4 class="text-center"><strong>Editor</strong></h4>
 							<textarea required data-ng-model="chapter.content" class="form-control animate msd-elastic: \n;"></textarea>
-						</div>
+						</div>-->
 					</div>
 				</div>
 				{{chapter.content}}

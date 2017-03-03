@@ -26,7 +26,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" th:text="#{navbar.brand}" th:href="@{~/}">Simote</a>
+				<a class="navbar-brand" th:text="#{navbar.brand}" th:href="@{~/}">Instructions App</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,14 +37,14 @@
 						th:href="@{~/}"></a></li>
 					<li><a th:text="#{navbar.freshbar}" th:href="@{~/freshbar}"></a></li>
 				</ul>
-				<form class="navbar-form navbar-left">
+				<!--<form class="navbar-form navbar-left">
 					<div class="form-group">
 						<input type="text" class="form-control"
 							th:placeholder="#{navbar.search.placeholder}">
 					</div>
 					<button type="submit" class="btn btn-default"
 						th:text="#{navbar.search.button}"></button>
-				</form>
+				</form>-->
 				<ul th:fragment="navbarRight" th:inline="text"
 					class="nav navbar-nav navbar-right">
 					<li sec:authorize="hasAuthority('ADMIN')"><a
@@ -105,7 +105,8 @@
 		<div class="panel-footer">
 			<div class="row">
 				<div class="col-sm-10">
-					<a class="text-default" href="#">[[#{panel.creative.comments}]] 0</a> | <a
+					<a class="text-default" href="#">[[#{panel.creative.comments}]] 0</a> | <!--/*@thymesVar id="author" type=""*/-->
+					<a
 						class="text-success" th:with="root=@{~/user/}"
 						th:href="@{ ${root} + ${creative.author.nickname} }">[[#{panel.creative.author}]]
 						[[${creative.author.nickname}]]</a> | <span class="text-info">[[#{panel.creative.views}]] [[${creative.viewed}]]</span> | <span class="text-info">[[#{panel.creative.edited}]]
@@ -130,7 +131,7 @@
 	<div th:fragment="footer" class="row">
 		<div class="col-md-12">
 			<hr>
-			<p th:utext="#{footer.copyright}" class="text-center">Simote,
+			<p th:utext="#{footer.copyright}" class="text-center">MyApp,
 				2012-2016 &copy; Все права защищены, но всем как-то по...</p>
 		</div>
 	</div>

@@ -46,16 +46,20 @@
 							<span th:text="${error}"></span>
 							<form th:action="@{/auth/authorize}" method="post">
 								<div class="form-group">
-									<input type="text" th:placeholder="#{page.auth.username.placeholder}" class="form-control" name="username"
-										id="username">
+									<input type="text" th:placeholder="#{page.auth.username.placeholder}"
+										   class="form-control" name="username"
+										   id="username">
 								</div>
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-8">
-											<input type="password" class="form-control" th:placeholder="#{page.auth.password.placeholder}" name="password" id="password">
+											<input type="password" class="form-control"
+												   th:placeholder="#{page.auth.password.placeholder}" name="password"
+												   id="password">
 										</div>
 										<div class="col-sm-1">
-											<button type="submit" th:text="#{page.auth.login}" class="btn btn-success"></button>
+											<button type="submit" th:text="#{page.auth.login}"
+													class="btn btn-success"></button>
 										</div>
 									</div>
 								</div>
@@ -63,8 +67,9 @@
 									<div class="row">
 										<div class="col-sm-4 col-sm-offset-2">
 											<div class="checkbox">
-												<label th:inline="text"> <input name="remember-me" id="remember-me" type="checkbox">
-												[[#{page.auth.rememberme}]]
+												<label th:inline="text"> <input name="remember-me" id="remember-me"
+																				type="checkbox">
+													[[#{page.auth.rememberme}]]
 												</label>
 											</div>
 										</div>
@@ -74,28 +79,33 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-2 col-sm-offset-2">
+									<!--<div class="col-sm-2 col-sm-offset-2">
 										<a
-											href="https://oauth.vk.com/authorize?client_id=5701213&display=page&redirect_uri=http://localhost:8080/auth/vk&scope=email&response_type=code&v=5.60"><img
-											class="social img-rounded" th:src="@{~/img/vk.png}"></a>
+												href="https://oauth.vk.com/authorize?client_id=5701213&display=page&redirect_uri=http://localhost:8080/auth/vk&scope=email&response_type=code&v=5.60"><img
+												class="social img-rounded" th:src="@{~/img/vk.png}"></a>
+									</div>-->
+                                    <div class="col-sm-2 col-sm-offset-2">
+                                        <a
+                                                href="auth/vk?userName=${userName}&password=${password}"><img
+                                                class="social img-rounded" th:src="@{~/img/vk.png}"></a>
+                                    </div>
+									<div class="col-sm-2 col-sm-offset-1">
+										<a href="auth/twitter?userName=${userName}&password=${password}"><img class="social img-rounded"
+														th:src="@{~/img/twitter.png}"></a>
+										<a ng-href=”auth/twitter?userName={{userName}}&password={{password}}></a>
 									</div>
 									<div class="col-sm-2 col-sm-offset-1">
-										<a href=""><img class="social img-rounded"
-											th:src="@{~/img/twitter.png}"></a>
-									</div>
-									<div class="col-sm-2 col-sm-offset-1">
-										<a href=""><img class="social img-rounded"
-											th:src="@{~/img/facebook.png}"></a>
+										<a href="auth/facebook?userName=${userName}&password=${password}"><img class="social img-rounded"
+														th:src="@{~/img/facebook.png}"></a>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
-				</div>
-				<div class="row">
+
 					<form th:action=@{~/auth/signup} method="get">
 						<button type="submit" style="display: block; width: 100%;"
-							class="btn btn-primary" th:text="#{page.auth.signin}"></button>
+								class="btn btn-primary" th:text="#{page.auth.signin}"></button>
 					</form>
 				</div>
 			</div>
