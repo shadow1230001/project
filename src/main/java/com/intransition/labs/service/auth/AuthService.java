@@ -5,5 +5,5 @@ package com.intransition.labs.service.auth;
  */
 public interface AuthService {
 
-    void authorize(String userName, String password);
+    void authorize(String appId, String appKey);
 }

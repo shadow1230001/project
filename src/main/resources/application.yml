@@ -16,7 +16,7 @@ spring:
       redirect-uri: http://localhost:8080/auth/vk
 # SQL
   datasource:
-    url: jdbc:mysql://localhost:3306/kursach2?useSSL=false
+    url: jdbc:mysql://localhost:3306/kursach2?characterEncoding=Cp1251
     username: root
     password: 14031984qwerty
     testWhileIdle: true

@@ -36,7 +36,7 @@ public class AdminPanelController {
 	}
 	
 	@GetMapping( "/profiles" )
-	public @ResponseBody HashMap< String, Object >getProfiles( @PageableDefault( size = 2 ) Pageable pageable ) {
+	public @ResponseBody HashMap< String, Object >getProfiles( @PageableDefault( size =2 ) Pageable pageable ) {
 		List<Profile> profiles = new ArrayList<Profile>();
 		Page<User> page = userService.getProfiles( pageable );
 		

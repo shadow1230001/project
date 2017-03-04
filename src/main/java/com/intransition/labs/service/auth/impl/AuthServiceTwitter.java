@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service(value = "authServiceTwitter")
 public class AuthServiceTwitter implements AuthService {
     @Override
-    public void authorize(String userName, String password) {
+    public void authorize(String appId, String appKey) {
 
     }
 }
