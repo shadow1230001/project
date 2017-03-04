@@ -1,11 +1,11 @@
 package com.intransition.labs.service;
 
-import java.util.List;
-import java.util.Set;
-
 import com.intransition.labs.domain.content.Creative;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+import java.util.Set;
 
 public interface CreativeService {
 	
@@ -18,5 +18,8 @@ public interface CreativeService {
 	Page<Creative> findAllByOrderByCreatedDesc( Pageable pageable );
 
 	Page<Creative> findAllByOrderByEditedDesc(Pageable pageable);
+
+	//Page<Creative> findAllByTagsInTagsOrderByEditedDesc(String tag, Pageable pageable);
+	//findByAgeIn()
 	
 }

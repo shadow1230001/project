@@ -13,4 +13,7 @@ public interface CreativeRepository extends PagingAndSortingRepository<Creative,
 
 	Page<Creative> findAllByOrderByEditedDesc(Pageable pageable);
 
+	//Page<Creative> findAllByTagInTagsOrderByEditedDesc(Tag tag, Pageable pageable);
+
+
 }

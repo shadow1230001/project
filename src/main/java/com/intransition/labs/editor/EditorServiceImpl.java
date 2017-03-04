@@ -1,22 +1,22 @@
 package com.intransition.labs.editor;
 
+import com.intransition.labs.domain.content.Chapter;
+import com.intransition.labs.domain.content.Creative;
+import com.intransition.labs.domain.content.Tag;
+import com.intransition.labs.repository.CreativeRepository;
+import com.intransition.labs.repository.TagRepository;
+import com.intransition.labs.service.AwardService;
+import com.intransition.labs.service.AwardType;
+import com.intransition.labs.service.MessageByLocaleService;
+import com.intransition.labs.service.SecurityService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.intransition.labs.domain.content.Chapter;
-import com.intransition.labs.domain.content.Creative;
-import com.intransition.labs.repository.CreativeRepository;
-import com.intransition.labs.repository.TagRepository;
-import com.intransition.labs.service.AwardType;
-import com.intransition.labs.service.MessageByLocaleService;
-import com.intransition.labs.service.SecurityService;
-import com.intransition.labs.domain.content.Tag;
-import com.intransition.labs.service.AwardService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class EditorServiceImpl implements EditorService {
@@ -149,12 +149,13 @@ public class EditorServiceImpl implements EditorService {
 		}
 		
 		for( Chapter ch : creative.getChapters() ) {
-			if( ch.getContent().isEmpty() || ch.getContent() == null ) {
+			if( ch.getContent() == null || ch.getContent().isEmpty() ) {
 				addError( alert, messageByLocaleService.getMessage( "page.editor.error.chapter.nocontent" ) );
 			}
-			if( ch.getTitle().isEmpty() || ch.getTitle() == null ) {
+			/*
+			if( ch.getTitle() == null || ch.getTitle().isEmpty() ) {
 				addError( alert, messageByLocaleService.getMessage( "page.editor.error.chapter.title.empty" ) );
-			}
+			}*/
 			/*
 			if( ch.getTags().size() < 2 ) {
 				for( Tag t : ch.getTags() ) 
