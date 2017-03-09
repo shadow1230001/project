@@ -98,10 +98,10 @@ public class AuthController {
     }
 
     @GetMapping(value = "/auth/twitter")
-    public String authViaTwitter(@RequestParam(name = "userName") String userName, @RequestParam(name = "password") String password) throws ApiException, ClientException, IOException, JsonSyntaxException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
+    public String authViaTwitter(@RequestParam(name = "appp-id") String userName, @RequestParam(name = "app-secret") String password) throws ApiException, ClientException, IOException, JsonSyntaxException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
 
-        authServiceTwitter.authorize(userName, password);
-        return "redirect:/";
+//        authServiceTwitter.authorize(appId, appKey);
+        return "redirect:https://twitter.com/vlyubin?lang=ru";
     }
 
 
