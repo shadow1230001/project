@@ -1,12 +1,12 @@
 package com.intransition.labs.service;
 
+import com.intransition.labs.domain.content.Chapter;
+
 import java.util.List;
 import java.util.Set;
 
-import com.intransition.labs.domain.content.Chapter;
-
 public interface ChapterService {
 
-	List<Chapter> sortChaptersByOrder(Set<Chapter> chaptersToSort );
-	
+    List<Chapter> sortChaptersByOrder(Set<Chapter> chaptersToSort);
+
 }

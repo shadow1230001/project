@@ -2,12 +2,12 @@ package com.intransition.labs.editor;
 
 import com.intransition.labs.domain.content.Creative;
 
-public interface EditorService  {
-	
-	Creative convertFromJsonToJpaCreative(JsonCreative creative );
+public interface EditorService {
 
-	void saveAndFlush( Creative creative );
+    Creative convertFromJsonToJpaCreative(JsonCreative creative);
 
-	Alert validate(Creative creative);
+    void saveAndFlush(Creative creative);
+
+    Alert validate(Creative creative);
 
 }

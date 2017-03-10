@@ -3,87 +3,88 @@ package com.intransition.labs.domain.user;
 import java.sql.Date;
 
 public class Profile {
-	
-	private int id;
-	
-	private String email;
-	
-	private String nickname;
-	
-	private String firstName;
-	
-	private String lastName;
-	
-	private boolean banned;
-	
-	private Date registered;
-	
-	public Profile() {}
-	
-	public Profile( User user ) {
-		setId(user.getId());
-		setEmail(user.getEmail());
-		setNickname(user.getNickname());
-		setFirstName(user.getFirstName());
-		setLastName(user.getLastName());
-		setBanned(user.isBanned());
-		setRegistered(user.getRegistrationDate());
-	}
 
-	public int getId() {
-		return id;
-	}
+    private int id;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    private String email;
 
-	public String getEmail() {
-		return email;
-	}
+    private String nickname;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    private String firstName;
 
-	public String getNickname() {
-		return nickname;
-	}
+    private String lastName;
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+    private boolean banned;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    private Date registered;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public Profile() {
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public Profile(User user) {
+        setId(user.getId());
+        setEmail(user.getEmail());
+        setNickname(user.getNickname());
+        setFirstName(user.getFirstName());
+        setLastName(user.getLastName());
+        setBanned(user.isBanned());
+        setRegistered(user.getRegistrationDate());
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public boolean isBanned() {
-		return banned;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setBanned(boolean banned) {
-		this.banned = banned;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Date getRegistered() {
-		return registered;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setRegistered(Date registered) {
-		this.registered = registered;
-	}
-	
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public boolean isBanned() {
+        return banned;
+    }
+
+    public void setBanned(boolean banned) {
+        this.banned = banned;
+    }
+
+    public Date getRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(Date registered) {
+        this.registered = registered;
+    }
+
 }

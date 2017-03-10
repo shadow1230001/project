@@ -7,13 +7,13 @@ import org.springframework.validation.Validator;
 
 @Component
 public class LoginValidator implements Validator {
-	
-	public boolean supports(Class<?> clazz) {
-		return LoginForm.class.isAssignableFrom(clazz);
-	}
 
-	public void validate(Object target, Errors errors) {
-	/*	LoginForm loginForm = (LoginForm) target;
+    public boolean supports(Class<?> clazz) {
+        return LoginForm.class.isAssignableFrom(clazz);
+    }
+
+    public void validate(Object target, Errors errors) {
+    /*	LoginForm loginForm = (LoginForm) target;
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "username.empty", "Username must not be empty.");
 		String name = loginForm.getName();
@@ -26,6 +26,6 @@ public class LoginValidator implements Validator {
 			errors.rejectValue("email", "email.notValid", "Email address is not valid.");
 		}
 	*/
-	}
+    }
 
 }

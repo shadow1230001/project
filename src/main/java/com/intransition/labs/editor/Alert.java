@@ -4,61 +4,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Alert {
-	
-	private AlertLevel level;
-	
-	private String description; 
-	
-	private boolean show = true;
-	
-	private List<String> messages = new ArrayList<String>();
-	
-	private String title;
-	
-	public boolean hasErrors;
 
-	public AlertLevel getLevel() {
-		return level;
-	}
+    private AlertLevel level;
 
-	public void setLevel(AlertLevel level) {
-		this.level = level;
-	}
+    private String description;
 
-	public String getDescription() {
-		return description;
-	}
+    private boolean show = true;
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    private List<String> messages = new ArrayList<String>();
 
-	public List<String> getMessages() {
-		return messages;
-	}
+    private String title;
 
-	public void setMessages(List<String> messages) {
-		this.messages = messages;
-	}
-	
-	public boolean hasErrors() {
-		return hasErrors;
-	}
+    public boolean hasErrors;
 
-	public boolean isShow() {
-		return show;
-	}
+    public AlertLevel getLevel() {
+        return level;
+    }
 
-	public void setShow(boolean show) {
-		this.show = show;
-	}
+    public void setLevel(AlertLevel level) {
+        this.level = level;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<String> messages) {
+        this.messages = messages;
+    }
+
+    public boolean hasErrors() {
+        return hasErrors;
+    }
+
+    public boolean isShow() {
+        return show;
+    }
+
+    public void setShow(boolean show) {
+        this.show = show;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
 }

@@ -8,18 +8,18 @@ import java.util.List;
 import java.util.Set;
 
 public interface CreativeService {
-	
-	Creative getCreative( int id );
-	
-	List<Creative> sortCreativesByCreated( Set<Creative> creativesToSort );
 
-	List<Creative> sortCreativesByCreatedDesc(Set<Creative> creatives);
-	
-	Page<Creative> findAllByOrderByCreatedDesc( Pageable pageable );
+    Creative getCreative(int id);
 
-	Page<Creative> findAllByOrderByEditedDesc(Pageable pageable);
+    List<Creative> sortCreativesByCreated(Set<Creative> creativesToSort);
 
-	//Page<Creative> findAllByTagsInTagsOrderByEditedDesc(String tag, Pageable pageable);
-	//findByAgeIn()
-	
+    List<Creative> sortCreativesByCreatedDesc(Set<Creative> creatives);
+
+    Page<Creative> findAllByOrderByCreatedDesc(Pageable pageable);
+
+    Page<Creative> findAllByOrderByEditedDesc(Pageable pageable);
+
+    //Page<Creative> findAllByTagsInTagsOrderByEditedDesc(String tag, Pageable pageable);
+    //findByAgeIn()
+
 }

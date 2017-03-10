@@ -12,19 +12,20 @@ import java.util.Locale;
 
 public class LocaleResolver extends AbstractLocaleResolver {
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Override
-	public Locale resolveLocale(HttpServletRequest request) {
-		Principal principal = request.getUserPrincipal();
-		if( principal == null ) return new Locale( "en" );
-		User user = userRepository.findByNickname(principal.getName());
-	
-		return new Locale( user.getUserSettings().getLanguage().getCode() );
-	}
+    @Autowired
+    private UserRepository userRepository;
 
-	@Override
-	public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {}
+    @Override
+    public Locale resolveLocale(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        if (principal == null) return new Locale("en");
+        User user = userRepository.findByNickname(principal.getName());
+
+        return new Locale(user.getUserSettings().getLanguage().getCode());
+    }
+
+    @Override
+    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    }
 
 }

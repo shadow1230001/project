@@ -1,4 +1,3 @@
-
 (function ($) {
     "use strict";
     $.fn.ratingThemes['krajee-svg'] = {

@@ -4,54 +4,55 @@ import org.springframework.data.domain.Page;
 
 public class ProfilePageJsonWrapper {
 
-	private int totalPages;
-	
-	private int number;
-	
-	private boolean hasPrevious;
-	
-	private boolean hasNext;
-	
-	public ProfilePageJsonWrapper() {}
-	
-	public ProfilePageJsonWrapper( Page<?> page ) {
-		setTotalPages(page.getTotalPages());
-		setNumber(page.getNumber());
-		setHasPrevious(page.hasPrevious());
-		setHasNext(page.hasNext());
-	}
+    private int totalPages;
 
-	public int getTotalPages() {
-		return totalPages;
-	}
+    private int number;
 
-	public void setTotalPages(int totalPages) {
-		this.totalPages = totalPages;
-	}
+    private boolean hasPrevious;
 
-	public int getNumber() {
-		return number;
-	}
+    private boolean hasNext;
 
-	public void setNumber(int number) {
-		this.number = number;
-	}
+    public ProfilePageJsonWrapper() {
+    }
 
-	public boolean isHasPrevious() {
-		return hasPrevious;
-	}
+    public ProfilePageJsonWrapper(Page<?> page) {
+        setTotalPages(page.getTotalPages());
+        setNumber(page.getNumber());
+        setHasPrevious(page.hasPrevious());
+        setHasNext(page.hasNext());
+    }
 
-	public void setHasPrevious(boolean hasPrevious) {
-		this.hasPrevious = hasPrevious;
-	}
+    public int getTotalPages() {
+        return totalPages;
+    }
 
-	public boolean isHasNext() {
-		return hasNext;
-	}
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
 
-	public void setHasNext(boolean hasNext) {
-		this.hasNext = hasNext;
-	}
+    public int getNumber() {
+        return number;
+    }
 
-	
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public boolean isHasPrevious() {
+        return hasPrevious;
+    }
+
+    public void setHasPrevious(boolean hasPrevious) {
+        this.hasPrevious = hasPrevious;
+    }
+
+    public boolean isHasNext() {
+        return hasNext;
+    }
+
+    public void setHasNext(boolean hasNext) {
+        this.hasNext = hasNext;
+    }
+
+
 }

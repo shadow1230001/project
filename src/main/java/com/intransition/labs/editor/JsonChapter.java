@@ -3,45 +3,45 @@ package com.intransition.labs.editor;
 import java.util.Set;
 
 class JsonChapter {
-	
-	private Integer id;
-	
-	private String title;
-	
-	private String content;
-	
-	private Set<JsonTag> tags;
 
-	public Integer getId() {
-		return id;
-	}
+    private Integer id;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private String title;
 
-	public String getTitle() {
-		return title;
-	}
+    private String content;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    private Set<JsonTag> tags;
 
-	public String getContent() {
-		return content;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Set<JsonTag> getTags() {
-		return tags;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTags(Set<JsonTag> tags) {
-		this.tags = tags;
-	}
-	
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Set<JsonTag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<JsonTag> tags) {
+        this.tags = tags;
+    }
+
 }

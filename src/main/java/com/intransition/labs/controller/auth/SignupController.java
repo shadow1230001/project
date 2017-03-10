@@ -1,8 +1,5 @@
 package com.intransition.labs.controller.auth;
 
-import com.intransition.labs.service.SecurityService;
-import com.intransition.labs.service.UserService;
-import com.intransition.labs.validation.RegistrationFormValidator;
 import com.intransition.labs.form.SignupForm;
 import com.intransition.labs.service.SecurityService;
 import com.intransition.labs.service.UserService;
@@ -17,37 +14,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping( value = "auth/signup" )
+@RequestMapping(value = "auth/signup")
 public class SignupController {
 
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private SecurityService securityService;
-	
-	@Autowired
-	private RegistrationFormValidator registrationValidator;
-	
-	@GetMapping
-	public String registration( Model model ) {
-		model.addAttribute( "signupForm", new SignupForm() );
-		
-		return "auth/signup";
-	}	
-	
-	@PostMapping
-	public String registration( @ModelAttribute("signupForm") SignupForm signupForm, BindingResult bindingResult, Model model ) {
-        registrationValidator.validate( signupForm, bindingResult );
-        
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private RegistrationFormValidator registrationValidator;
+
+    @GetMapping
+    public String registration(Model model) {
+        model.addAttribute("signupForm", new SignupForm());
+
+        return "auth/signup";
+    }
+
+    @PostMapping
+    public String registration(@ModelAttribute("signupForm") SignupForm signupForm, BindingResult bindingResult, Model model) {
+        registrationValidator.validate(signupForm, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "auth/signup";
         }
 
-        userService.register( signupForm.getUser() );
-        securityService.authorize( signupForm.getNickname(), signupForm.getPasswordConfirm() );
-        
-		return "redirect:/";
-	}
-	
+        userService.register(signupForm.getUser());
+        securityService.authorize(signupForm.getNickname(), signupForm.getPasswordConfirm());
+
+        return "redirect:/";
+    }
+
 }

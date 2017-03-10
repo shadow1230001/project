@@ -4,44 +4,44 @@ import java.util.Set;
 
 class JsonCreative {
 
-	private String name;
-	
-	private Set<JsonTag> tags;
+    private String name;
 
-	private Set<JsonChapter> chapters;
-	
-	private String description;
+    private Set<JsonTag> tags;
 
-	public String getName() {
-		return name;
-	}
+    private Set<JsonChapter> chapters;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String description;
 
-	public Set<JsonTag> getTags() {
-		return tags;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setTags(Set<JsonTag> tags) {
-		this.tags = tags;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Set<JsonChapter> getChapters() {
-		return chapters;
-	}
+    public Set<JsonTag> getTags() {
+        return tags;
+    }
 
-	public void setChapters(Set<JsonChapter> chapters) {
-		this.chapters = chapters;
-	}
+    public void setTags(Set<JsonTag> tags) {
+        this.tags = tags;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public Set<JsonChapter> getChapters() {
+        return chapters;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
+    public void setChapters(Set<JsonChapter> chapters) {
+        this.chapters = chapters;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

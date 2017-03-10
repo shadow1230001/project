@@ -2,11 +2,11 @@ package com.intransition.labs.editor;
 
 public enum AlertLevel {
 
-	SUCCESS, INFO, WARNING, DANGER;
+    SUCCESS, INFO, WARNING, DANGER;
 
-	@Override
-	public String toString() {
-		return super.toString().toLowerCase();
-	}
-	
+    @Override
+    public String toString() {
+        return super.toString().toLowerCase();
+    }
+
 }

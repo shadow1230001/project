@@ -16,10 +16,10 @@ import java.util.Locale;
 @SpringBootApplication
 public class LyubinApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LyubinApplication.class, args);
-	}
-	
+    public static void main(String[] args) {
+        SpringApplication.run(LyubinApplication.class, args);
+    }
+
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
@@ -31,37 +31,37 @@ public class LyubinApplication {
         return messageSource;
 
     }
-    
+
     @Bean
     public LocaleResolver localeResolver() {
-    	com.intransition.labs.LocaleResolver localeResolver = new com.intransition.labs.LocaleResolver();
-    	localeResolver.setDefaultLocale(new Locale("en_US"));
-    	
-    	return localeResolver;
+        com.intransition.labs.LocaleResolver localeResolver = new com.intransition.labs.LocaleResolver();
+        localeResolver.setDefaultLocale(new Locale("en_US"));
+
+        return localeResolver;
     }
-	
-	@Bean
+
+    @Bean
     public SpringDataDialect springDataDialect() {
         return new SpringDataDialect();
     }
-	    
+
     @Bean
     public ThemeSource themeSource() {
-    	ResourceBundleThemeSource themeSource = new ResourceBundleThemeSource();
-    	themeSource.setBasenamePrefix("themes/");
-    	return themeSource;
+        ResourceBundleThemeSource themeSource = new ResourceBundleThemeSource();
+        themeSource.setBasenamePrefix("themes/");
+        return themeSource;
     }
-    
+
     @Bean
     public ThemeResolver themeResolver() {
-    	ThemeResolver themeResolver = new com.intransition.labs.thymeleaf.ThemeResolver();
-    	return themeResolver;
+        ThemeResolver themeResolver = new com.intransition.labs.thymeleaf.ThemeResolver();
+        return themeResolver;
     }
-    
+
     @Bean("pegdown")
     public PegDownProcessor pegdown() {
-    	PegDownProcessor pegDownProcessor = new PegDownProcessor();  	
-    	return pegDownProcessor;
+        PegDownProcessor pegDownProcessor = new PegDownProcessor();
+        return pegDownProcessor;
     }
-        
+
 }

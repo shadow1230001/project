@@ -1,147 +1,150 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="head">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link th:with="css=${#themes.code('bootstrap')}, root = @{~/}"
-	th:href="${root} + ${css}" rel="stylesheet">
+    <link th:with="css=${#themes.code('bootstrap')}, root = @{~/}"
+          th:href="${root} + ${css}" rel="stylesheet">
 
-<!--[if lt IE 9]>
-    	 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    	  		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    		<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body class="container">
-	<nav th:fragment="navbar" class="navbar navbar-default">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-					aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" th:text="#{navbar.brand}" th:href="@{~/}">Instructions App</a>
-			</div>
+<nav th:fragment="navbar" class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:text="#{navbar.brand}" th:href="@{~/}">Instructions App</a>
+        </div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a th:text="#{navbar.hot}"
-						th:href="@{~/}"></a></li>
-					<li><a th:text="#{navbar.freshbar}" th:href="@{~/freshbar}"></a></li>
-				</ul>
-				<!--<form class="navbar-form navbar-left">
-					<div class="form-group">
-						<input type="text" class="form-control"
-							th:placeholder="#{navbar.search.placeholder}">
-					</div>
-					<button type="submit" class="btn btn-default"
-						th:text="#{navbar.search.button}"></button>
-				</form>-->
-				<ul th:fragment="navbarRight" th:inline="text"
-					class="nav navbar-nav navbar-right">
-					<li sec:authorize="hasAuthority('ADMIN')"><a
-						th:href="@{~/admin}" href="#"><span
-							class="label label-danger">[[ #{navbar.adminpanel} ]] <span
-								class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse"
+             id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a th:text="#{navbar.hot}"
+                       th:href="@{~/}"></a></li>
+                <li><a th:text="#{navbar.freshbar}" th:href="@{~/freshbar}"></a></li>
+            </ul>
+            <!--<form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control"
+                        th:placeholder="#{navbar.search.placeholder}">
+                </div>
+                <button type="submit" class="btn btn-default"
+                    th:text="#{navbar.search.button}"></button>
+            </form>-->
+            <ul th:fragment="navbarRight" th:inline="text"
+                class="nav navbar-nav navbar-right">
+                <li sec:authorize="hasAuthority('ADMIN')"><a
+                        th:href="@{~/admin}" href="#"><span
+                        class="label label-danger">[[ #{navbar.adminpanel} ]] <span
+                        class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 						</span></a></li>
-					<li sec:authorize="!isAnonymous()"><a
-						th:href="@{~/personal/editor}" href="#"><span
-							class="label label-success">[[ #{navbar.addcreative} ]] <span
-								class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <li sec:authorize="!isAnonymous()"><a
+                        th:href="@{~/personal/editor}" href="#"><span
+                        class="label label-success">[[ #{navbar.addcreative} ]] <span
+                        class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</span></a></li>
-					<li sec:authorize="!isAnonymous()" class="dropdown"><a
-						href="#" class="dropdown-toggle" data-toggle="dropdown"
-						role="button" aria-haspopup="true" aria-expanded="false"><span
-							sec:authentication="principal.user.nickname"></span> <span
-							class="caret"></span></a>
-						<ul class="dropdown-menu" th:inline="text">
-							<li><a th:href="@{~/personal}" href="#">[[#{navbar.profile.personal}]]
-									<span class="glyphicon glyphicon-user pull-right"
-									aria-hidden="true"></span>
-							</a></li>
-							<li><a th:href="@{~/personal/settings}" href="#">[[#{navbar.profile.settings}]]<span
-									class="glyphicon glyphicon-cog pull-right" aria-hidden="true"></span></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a th:href="@{~/auth/logout}" href="#">[[#{navbar.profile.logout}]]
-									<span class="glyphicon glyphicon-off pull-right"
-									aria-hidden="true"></span>
-							</a></li>
-						</ul></li>
-					<li sec:authorize="isAnonymous()"><a th:href="@{~/auth}"
-						href="#" th:text="#{navbar.right.auth}"></a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-	<div th:fragment="header(title, description)" class="page-header">
-		<h1 th:inline="text" class="text-default">
-			[[${title}]] <small>[[${description}]]</small>
-		</h1>
-	</div>
+                <li sec:authorize="!isAnonymous()" class="dropdown"><a
+                        href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false"><span
+                        sec:authentication="principal.user.nickname"></span> <span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu" th:inline="text">
+                        <li><a th:href="@{~/personal}" href="#">[[#{navbar.profile.personal}]]
+                            <span class="glyphicon glyphicon-user pull-right"
+                                  aria-hidden="true"></span>
+                        </a></li>
+                        <li><a th:href="@{~/personal/settings}" href="#">[[#{navbar.profile.settings}]]<span
+                                class="glyphicon glyphicon-cog pull-right" aria-hidden="true"></span></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a th:href="@{~/auth/logout}" href="#">[[#{navbar.profile.logout}]]
+                            <span class="glyphicon glyphicon-off pull-right"
+                                  aria-hidden="true"></span>
+                        </a></li>
+                    </ul>
+                </li>
+                <li sec:authorize="isAnonymous()"><a th:href="@{~/auth}"
+                                                     href="#" th:text="#{navbar.right.auth}"></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div th:fragment="header(title, description)" class="page-header">
+    <h1 th:inline="text" class="text-default">
+        [[${title}]]
+        <small>[[${description}]]</small>
+    </h1>
+</div>
 
-	<div th:inline="text" th:fragment="creativePanel(creative)"
-		class="panel panel-default">
-		<div class="panel-heading">
-			<h5>
-				<a class="text-success" th:text="${creative.name}"
-					th:with="root=@{~/creative/}"
-					th:href="@{ ${root} + ${creative.id} }"></a>
-		<!--  <span ng-click="deleteCreative()"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></span> -->
-			</h5>
-		</div>
-		<div class="panel-body">
-			<p class="text-center" th:text=${creative.description}></p>
-		</div>
-		<div class="panel-footer">
-			<div class="row">
-				<div class="col-sm-10">
-					<a class="text-default" href="#">[[#{panel.creative.comments}]] 0</a> | <!--/*@thymesVar id="author" type=""*/-->
-					<a
-						class="text-success" th:with="root=@{~/user/}"
-						th:href="@{ ${root} + ${creative.author.nickname} }">[[#{panel.creative.author}]]
-						[[${creative.author.nickname}]]</a> | <span class="text-info">[[#{panel.creative.views}]] [[${creative.viewed}]]</span> | <span class="text-info">[[#{panel.creative.edited}]]
+<div th:inline="text" th:fragment="creativePanel(creative)"
+     class="panel panel-default">
+    <div class="panel-heading">
+        <h5>
+            <a class="text-success" th:text="${creative.name}"
+               th:with="root=@{~/creative/}"
+               th:href="@{ ${root} + ${creative.id} }"></a>
+            <!--  <span ng-click="deleteCreative()"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></span> -->
+        </h5>
+    </div>
+    <div class="panel-body">
+        <p class="text-center" th:text=${creative.description}></p>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-sm-10">
+                <a class="text-default" href="#">[[#{panel.creative.comments}]] 0</a> |
+                <!--/*@thymesVar id="author" type=""*/-->
+                <a
+                        class="text-success" th:with="root=@{~/user/}"
+                        th:href="@{ ${root} + ${creative.author.nickname} }">[[#{panel.creative.author}]]
+                    [[${creative.author.nickname}]]</a> | <span class="text-info">[[#{panel.creative.views}]] [[${creative.viewed}]]</span>
+                | <span class="text-info">[[#{panel.creative.edited}]]
 				[[${creative.edited}]]</span> | <span class="text-info">[[#{panel.creative.created}]] [[${{creative.created}}]]</span>
-						<br>
-						 <a class="text-default"
-						th:with="root=@{~/tag/}" th:each=" tag : ${creative.tags}"
-						th:href="@{ ${root} + ${tag.address} }"><span
-						class="label label-default" th:text="${tag.name}"></span></a>
-				</div>
-				<div class="col-sm-2">
-					<a th:with="root=@{~/creative/}"
-						th:href="@{ ${root} + ${creative.id} }"
-						class="btn btn-default pull-right btn-sm">[[#{panel.creative.readbutton}]]</a>
-				</div>
-			</div>
-		</div>
-	</div>
+                <br>
+                <a class="text-default"
+                   th:with="root=@{~/tag/}" th:each=" tag : ${creative.tags}"
+                   th:href="@{ ${root} + ${tag.address} }"><span
+                        class="label label-default" th:text="${tag.name}"></span></a>
+            </div>
+            <div class="col-sm-2">
+                <a th:with="root=@{~/creative/}"
+                   th:href="@{ ${root} + ${creative.id} }"
+                   class="btn btn-default pull-right btn-sm">[[#{panel.creative.readbutton}]]</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+<div th:fragment="footer" class="row">
+    <div class="col-md-12">
+        <hr>
+        <p th:utext="#{footer.copyright}" class="text-center">MyApp,
+            2012-2016 &copy; Все права защищены, но всем как-то по...</p>
+    </div>
+</div>
 
-	<div th:fragment="footer" class="row">
-		<div class="col-md-12">
-			<hr>
-			<p th:utext="#{footer.copyright}" class="text-center">MyApp,
-				2012-2016 &copy; Все права защищены, но всем как-то по...</p>
-		</div>
-	</div>
-
-	<div th:fragment="scripts">
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-		<script th:src="@{~/js/bootstrap.min.js}"></script>
-	</div>
+<div th:fragment="scripts">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script th:src="@{~/js/bootstrap.min.js}"></script>
+</div>
 </body>
 </html>

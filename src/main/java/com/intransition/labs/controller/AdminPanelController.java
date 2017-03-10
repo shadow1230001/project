@@ -17,41 +17,44 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.*;
 
 @Controller
-@RequestMapping( value = "/admin" )
+@RequestMapping(value = "/admin")
 public class AdminPanelController {
-	
-	@Autowired
-	private SecurityService securityService;
-	
-	@Autowired
-	private UserService userService;
-	
-	@GetMapping
-	public String get() {		
-		if( !securityService.hasRole("ADMIN") ) {
-			return "redirect:/";
-		}
-		
-		return "admin";
-	}
-	
-	@GetMapping( "/profiles" )
-	public @ResponseBody HashMap< String, Object >getProfiles( @PageableDefault( size =2 ) Pageable pageable ) {
-		List<Profile> profiles = new ArrayList<Profile>();
-		Page<User> page = userService.getProfiles( pageable );
-		
-		page.forEach( user -> profiles.add( new Profile( user ) ) );
-		
-		Collections.sort( profiles, new Comparator<Profile>(){
-			public int compare( Profile o1, Profile o2 ) {
-				if( o1.getId() > o2.getId() ) return 1; else return -1;
-			}
-		});
-		
-		HashMap<String,Object> map = new HashMap<>();
-		map.put("profiles", profiles );
-		map.put("page", new ProfilePageJsonWrapper( page ) );
-		return map;
-	}
+
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping
+    public String get() {
+        if (!securityService.hasRole("ADMIN")) {
+            return "redirect:/";
+        }
+
+        return "admin";
+    }
+
+    @GetMapping("/profiles")
+    public
+    @ResponseBody
+    HashMap<String, Object> getProfiles(@PageableDefault(size = 2) Pageable pageable) {
+        List<Profile> profiles = new ArrayList<Profile>();
+        Page<User> page = userService.getProfiles(pageable);
+
+        page.forEach(user -> profiles.add(new Profile(user)));
+
+        Collections.sort(profiles, new Comparator<Profile>() {
+            public int compare(Profile o1, Profile o2) {
+                if (o1.getId() > o2.getId()) return 1;
+                else return -1;
+            }
+        });
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("profiles", profiles);
+        map.put("page", new ProfilePageJsonWrapper(page));
+        return map;
+    }
 
 }

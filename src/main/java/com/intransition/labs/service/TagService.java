@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface TagService {
 
-	List<Tag> getAllTags();
-	
-	List<String> autocomplete( String name );
-	
+    List<Tag> getAllTags();
+
+    List<String> autocomplete(String name);
+
 }

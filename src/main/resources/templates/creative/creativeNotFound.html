@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title th:text="#{ page.creativenotfound.title }"></title>
+    <title th:text="#{ page.creativenotfound.title }"></title>
 
-	<th:block th:include="template :: head"></th:block>
+    <th:block th:include="template :: head"></th:block>
 </head>
 <body>
 <th:block th:replace="template :: navbar"></th:block>
 
 <div class="jumbotron">
-  <div class="container">
-   <img th:src="@{~/img/creative/creativenotfound.png}" alt="Profile not found" class="img-circle" style="width:256px;height:256px;">
-	<h1 th:text="#{page.creativenotfound.jumbotron.title}"></h1>
-	<p th:text="#{page.creativenotfound.jumbotron.description}"></p>
-  <p><a class="btn btn-primary btn-lg" th:text="#{page.creativenotfound.jumbotron.backbutton}" th:href="@{/}" role="button"></a></p>
-  </div>
+    <div class="container">
+        <img th:src="@{~/img/creative/creativenotfound.png}" alt="Profile not found" class="img-circle"
+             style="width:256px;height:256px;">
+        <h1 th:text="#{page.creativenotfound.jumbotron.title}"></h1>
+        <p th:text="#{page.creativenotfound.jumbotron.description}"></p>
+        <p><a class="btn btn-primary btn-lg" th:text="#{page.creativenotfound.jumbotron.backbutton}" th:href="@{/}"
+              role="button"></a></p>
+    </div>
 </div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">		
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
 
 
-		</div>
+        </div>
+    </div>
+    <th:block th:replace="template :: footer"></th:block>
 </div>
-	<th:block th:replace="template :: footer"></th:block>
-</div>	
-	<th:block th:replace="template :: scripts"></th:block>
+<th:block th:replace="template :: scripts"></th:block>
 </body>
 </html>
