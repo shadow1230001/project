@@ -3,11 +3,10 @@ package com.intransition.labs.controller;
 import com.intransition.labs.domain.user.Language;
 import com.intransition.labs.domain.user.Theme;
 import com.intransition.labs.domain.user.UserSettings;
-import com.intransition.labs.form.SettingsForm;
+import com.intransition.labs.dto.SettingsForm;
 import com.intransition.labs.repository.UserSettingsRepository;
 import com.intransition.labs.service.SecurityService;
 import com.intransition.labs.service.SettingsService;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,10 +58,8 @@ public class SettingsController {
         Theme currentTheme = null;
         List<Theme> themes = settingsService.getAllAvailableThemes();
         for (Theme theme : themes) {
-            Logger.getLogger(getClass()).warn(theme.getCode());
             if (theme.getCode().equals(currentThemeCode)) {
                 currentTheme = theme;
-                Logger.getLogger(getClass()).warn("true");
                 break;
             }
         }

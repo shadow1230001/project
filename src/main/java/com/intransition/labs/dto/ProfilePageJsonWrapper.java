@@ -1,4 +1,4 @@
-package com.intransition.labs.admin;
+package com.intransition.labs.dto;
 
 import org.springframework.data.domain.Page;
 

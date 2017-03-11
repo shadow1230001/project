@@ -56,7 +56,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/creative/{id}")
-    public String viewCreative(@PathVariable(value = "id", required = true) int id, Model model) {
+    public String viewCreative(@PathVariable(value = "id") int id, Model model) {
         Creative creative = creativeService.getCreative(id);
 
         if (creative == null) return "creative/creativeNotFound";

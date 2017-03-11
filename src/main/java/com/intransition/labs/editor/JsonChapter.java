@@ -2,7 +2,7 @@ package com.intransition.labs.editor;
 
 import java.util.Set;
 
-class JsonChapter {
+public class JsonChapter {
 
     private Integer id;
 

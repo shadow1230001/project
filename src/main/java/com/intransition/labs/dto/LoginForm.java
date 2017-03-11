@@ -1,9 +1,12 @@
-package com.intransition.labs.form;
+package com.intransition.labs.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Size;
 
+/**
+ * Form for Login Page
+ */
 public class LoginForm {
 
     @NotBlank

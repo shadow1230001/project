@@ -1,6 +1,10 @@
-package com.intransition.labs.editor;
+package com.intransition.labs.controller;
 
 import com.intransition.labs.domain.content.Creative;
+import com.intransition.labs.editor.Alert;
+import com.intransition.labs.editor.AlertLevel;
+import com.intransition.labs.editor.EditorService;
+import com.intransition.labs.editor.JsonCreative;
 import com.intransition.labs.repository.CreativeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

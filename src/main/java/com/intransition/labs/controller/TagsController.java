@@ -25,7 +25,7 @@ public class TagsController {
 	private CreativeService creativeService;
 
 	@RequestMapping( value = "/tags/{tag}", method = RequestMethod.GET )
-	public String searchByTag(@PageableDefault( size = 5 ) Pageable pageable, @PathVariable( value = "tag", required = true ) String tag, Model model ) {
+	public String searchByTag(@PageableDefault( size = 5 ) Pageable pageable, @PathVariable( value = "tag") String tag, Model model ) {
 		//return "nu tut karoch poisk po tegy.";
 		//model.addAttribute( "tags", tagService.getAllTags() );
 
@@ -52,7 +52,7 @@ public class TagsController {
 	}
 
 	@RequestMapping( value = "/tags", method = RequestMethod.POST )
-	public @ResponseBody List<String> autocomplete( @RequestBody( required = true ) String tag ) {
+	public @ResponseBody List<String> autocomplete( @RequestBody String tag ) {
 		return tagService.autocomplete( tag );
 	}
 	

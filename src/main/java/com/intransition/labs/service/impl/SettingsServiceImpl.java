@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.intransition.labs.form.SettingsForm;
+import com.intransition.labs.dto.SettingsForm;
 import com.intransition.labs.domain.user.Language;
 import com.intransition.labs.domain.user.Theme;
 import com.intransition.labs.domain.user.User;

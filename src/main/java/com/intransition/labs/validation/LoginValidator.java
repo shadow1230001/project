@@ -1,6 +1,6 @@
 package com.intransition.labs.validation;
 
-import com.intransition.labs.form.LoginForm;
+import com.intransition.labs.dto.LoginForm;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

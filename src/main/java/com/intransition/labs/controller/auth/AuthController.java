@@ -12,6 +12,7 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.UserAuthResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -57,7 +58,7 @@ public class AuthController {
     }
 
     @GetMapping(value = "/auth/vk")
-    public String authViaVK(@RequestParam(name = "code", required = true) String code) throws ApiException, ClientException, IOException, JsonSyntaxException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
+    public String authViaVK(@RequestParam(name = "code") String code) throws ApiException, ClientException, IOException, JsonSyntaxException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
         String appId = env.getProperty("spring.social.vk.app-id");
         String appSecret = env.getProperty("spring.social.vk.app-secret");
         String redirectURI = env.getProperty("spring.social.vk.redirect-uri");
@@ -74,7 +75,7 @@ public class AuthController {
         UserAuthResponse authResponse = getAuthResponseFromJson(new Gson().fromJson(response, VKResponse.class));
         UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccessToken());
 
-        if (email == null || email.isEmpty()) {
+        if (StringUtils.isBlank(email)) {
             return "redirect:/";
         }
 

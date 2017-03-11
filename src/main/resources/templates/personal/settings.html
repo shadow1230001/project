@@ -66,9 +66,9 @@
                         </select>
                     </div>
                     <!--
-                      <div class="form-group" th:classappend="${#fields.hasErrors('lang')}? has-error">
+                      <div class="dto-group" th:classappend="${#fields.hasErrors('lang')}? has-error">
                           <label th:text="#{page.profile.settings.language.label}" th:for="*{lang}"></label>
-                        <select th:field="*{lang}" class="form-control">
+                        <select th:field="*{lang}" class="dto-control">
                             <option th:value="${currentLang}" th:text="${currentLang.name}"></option>
                             <option th:each="lang : ${siteLanguages}" th:value="${lang.code}"  th:text="${lang.name}"></option>
                         </select>

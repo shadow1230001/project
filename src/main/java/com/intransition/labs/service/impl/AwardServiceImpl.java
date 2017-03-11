@@ -1,17 +1,16 @@
 package com.intransition.labs.service.impl;
 
+import com.intransition.labs.domain.content.Award;
+import com.intransition.labs.domain.user.User;
+import com.intransition.labs.service.AwardService;
+import com.intransition.labs.service.AwardType;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
-
-import com.intransition.labs.domain.content.Award;
-import com.intransition.labs.domain.user.User;
-import com.intransition.labs.service.AwardType;
-import com.intransition.labs.service.AwardService;
-import org.springframework.stereotype.Service;
 
 @Service
 public class AwardServiceImpl implements AwardService {
@@ -24,11 +23,9 @@ public class AwardServiceImpl implements AwardService {
 	public List<Award> sortAwardsByAwardedTime( Set<Award> awardsToSort ) {
 		ArrayList<Award> awards = new ArrayList<Award>( awardsToSort );
 		
-		Collections.sort( awards, new Comparator<Award>(){
-			public int compare(Award o1, Award o2) {
-				if( o1.getAwardedTimestamp().after( o2.getAwardedTimestamp() ) ) return 1; else return -1;
-			}
-		});
+		Collections.sort( awards, (o1, o2) -> {
+            if( o1.getAwardedTimestamp().after( o2.getAwardedTimestamp() ) ) return 1; else return -1;
+        });
 		return awards;
 	}
 	

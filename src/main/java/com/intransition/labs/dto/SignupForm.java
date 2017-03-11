@@ -1,4 +1,4 @@
-package com.intransition.labs.form;
+package com.intransition.labs.dto;
 
 import com.intransition.labs.domain.user.User;
 import org.hibernate.validator.constraints.Email;
@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Size;
 
-public class SettingsForm {
+public class SignupForm {
 
     @Email
     private String email;
@@ -23,15 +23,13 @@ public class SettingsForm {
     @Size(min = 6, max = 50)
     private String nickname;
 
+    @NotBlank
     @Size(min = 6, max = 100)
     private String password;
 
+    @NotBlank
     @Size(min = 6, max = 100)
     private String passwordConfirm;
-
-    private String theme;
-
-    private String lang;
 
     public String getEmail() {
         return email;
@@ -84,29 +82,13 @@ public class SettingsForm {
     public User getUser() {
         User user = new User();
 
-        user.setEmail(email);
+        user.setEmail(email.toLowerCase());
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setNickname(nickname);
+        user.setNickname(nickname.toLowerCase());
         user.setPassword(password);
 
         return user;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public String getTheme() {
-        return theme;
-    }
-
-    public void setTheme(String theme) {
-        this.theme = theme;
     }
 
 }

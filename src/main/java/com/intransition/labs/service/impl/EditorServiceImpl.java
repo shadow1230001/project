@@ -1,14 +1,21 @@
-package com.intransition.labs.editor;
+package com.intransition.labs.service.impl;
 
 import com.intransition.labs.domain.content.Chapter;
 import com.intransition.labs.domain.content.Creative;
 import com.intransition.labs.domain.content.Tag;
+import com.intransition.labs.editor.Alert;
+import com.intransition.labs.editor.AlertLevel;
+import com.intransition.labs.editor.EditorService;
+import com.intransition.labs.editor.JsonChapter;
+import com.intransition.labs.editor.JsonCreative;
+import com.intransition.labs.editor.JsonTag;
 import com.intransition.labs.repository.CreativeRepository;
 import com.intransition.labs.repository.TagRepository;
 import com.intransition.labs.service.AwardService;
 import com.intransition.labs.service.AwardType;
 import com.intransition.labs.service.MessageByLocaleService;
 import com.intransition.labs.service.SecurityService;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,9 +69,9 @@ public class EditorServiceImpl implements EditorService {
     }
 
     private Set<Tag> convertJsonTagsToJpa(Creative parentCreative, Set<JsonTag> tags) {
-        if ((tags == null) || tags.isEmpty()) return new HashSet<Tag>();
+        if ((tags == null) || tags.isEmpty()) return new HashSet<>();
 
-        Set<Tag> convertedTags = new HashSet<Tag>();
+        Set<Tag> convertedTags = new HashSet<>();
 
         for (JsonTag jsonTag : tags) {
             List<Tag> t = tagRepository.findByName(jsonTag.getText());
@@ -83,9 +90,11 @@ public class EditorServiceImpl implements EditorService {
     }
 
     private Set<Tag> convertJsonTagsToJpa(Chapter chapter, Set<JsonTag> tags) {
-        if ((tags == null) || tags.isEmpty()) return new HashSet<Tag>();
+        if (CollectionUtils.isEmpty(tags)) {
+            return new HashSet<>();
+        }
 
-        Set<Tag> convertedTags = new HashSet<Tag>();
+        Set<Tag> convertedTags = new HashSet<>();
 
         for (JsonTag jsonTag : tags) {
             List<Tag> t = tagRepository.findByName(jsonTag.getText());
@@ -104,7 +113,7 @@ public class EditorServiceImpl implements EditorService {
     }
 
     private Set<Chapter> convertJsonChaptersToJpa(Creative parentCreative, Set<JsonChapter> chapters) {
-        Set<Chapter> convertedChapters = new HashSet<Chapter>();
+        Set<Chapter> convertedChapters = new HashSet<>();
 
         for (JsonChapter chapter : chapters) {
             Chapter convertedChapter = new Chapter();
@@ -140,7 +149,7 @@ public class EditorServiceImpl implements EditorService {
             addError(alert, messageByLocaleService.getMessage("page.editor.error.description.toobig", new Integer[]{400}));
         }
         /*
-		if( creative.getTags().size() < 2  ) {
+        if( creative.getTags().size() < 2  ) {
 			addError( alert, "Creative must have at least two tags" );
 		}*/
 
@@ -152,11 +161,11 @@ public class EditorServiceImpl implements EditorService {
             if (ch.getContent() == null || ch.getContent().isEmpty()) {
                 addError(alert, messageByLocaleService.getMessage("page.editor.error.chapter.nocontent"));
             }
-			/*
-			if( ch.getTitle() == null || ch.getTitle().isEmpty() ) {
+            /*
+            if( ch.getTitle() == null || ch.getTitle().isEmpty() ) {
 				addError( alert, messageByLocaleService.getMessage( "page.editor.error.chapter.title.empty" ) );
 			}*/
-			/*
+            /*
 			if( ch.getTags().size() < 2 ) {
 				for( Tag t : ch.getTags() ) 
 				Logger.getAnonymousLogger().warning( t.getName() );

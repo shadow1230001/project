@@ -1,6 +1,6 @@
 package com.intransition.labs.controller.auth;
 
-import com.intransition.labs.form.SignupForm;
+import com.intransition.labs.dto.SignupForm;
 import com.intransition.labs.service.SecurityService;
 import com.intransition.labs.service.UserService;
 import com.intransition.labs.validation.RegistrationFormValidator;

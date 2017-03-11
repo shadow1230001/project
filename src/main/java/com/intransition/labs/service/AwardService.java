@@ -12,6 +12,6 @@ public interface AwardService {
 
     List<Award> sortAwardsByAwardedTime(Set<Award> awardsToSort);
 
-    public Award giveUserAward(User user, AwardType type);
+    Award giveUserAward(User user, AwardType type);
 
 }

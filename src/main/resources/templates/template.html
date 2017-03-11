@@ -37,14 +37,14 @@
                        th:href="@{~/}"></a></li>
                 <li><a th:text="#{navbar.freshbar}" th:href="@{~/freshbar}"></a></li>
             </ul>
-            <!--<form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control"
+            <!--<dto class="navbar-dto navbar-left">
+                <div class="dto-group">
+                    <input type="text" class="dto-control"
                         th:placeholder="#{navbar.search.placeholder}">
                 </div>
                 <button type="submit" class="btn btn-default"
                     th:text="#{navbar.search.button}"></button>
-            </form>-->
+            </dto>-->
             <ul th:fragment="navbarRight" th:inline="text"
                 class="nav navbar-nav navbar-right">
                 <li sec:authorize="hasAuthority('ADMIN')"><a

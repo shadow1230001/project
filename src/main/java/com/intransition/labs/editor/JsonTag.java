@@ -1,6 +1,6 @@
 package com.intransition.labs.editor;
 
-class JsonTag {
+public class JsonTag {
 
     private String text;
 

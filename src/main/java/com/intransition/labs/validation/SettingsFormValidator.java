@@ -1,7 +1,7 @@
 package com.intransition.labs.validation;
 
 import com.intransition.labs.domain.user.User;
-import com.intransition.labs.form.SettingsForm;
+import com.intransition.labs.dto.SettingsForm;
 import com.intransition.labs.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,16 +44,16 @@ public class SettingsFormValidator implements Validator {
         
         /*
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "page.registration.signupform.validation.empty.password");
-        if ( form.getPassword().length() < 6 || form.getPassword().length() > 100 ) {
+        if ( dto.getPassword().length() < 6 || dto.getPassword().length() > 100 ) {
             errors.rejectValue("password", "page.registration.signupform.validation.size.password");
         }
         
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwordConfirm", "page.registration.signupform.validation.empty.passwordconfirm");
-        if ( form.getPassword().length() < 6 || form.getPassword().length() > 100 ) {
+        if ( dto.getPassword().length() < 6 || dto.getPassword().length() > 100 ) {
             errors.rejectValue("passwordConfirm", "page.registration.signupform.validation.size.passwordconfirm");
         }
         
-        if ( !form.getPassword().equals( form.getPasswordConfirm() ) ) {
+        if ( !dto.getPassword().equals( dto.getPasswordConfirm() ) ) {
             errors.rejectValue("passwordConfirm", "page.registration.signupform.validation.nodiff.passwordconfirm");
         }
         */

@@ -33,7 +33,7 @@ public class UserProfileController {
     }
 
     @GetMapping(value = "/user/{nickname}")
-    public String getUserProfile(Model model, @PathVariable(required = true) String nickname) {
+    public String getUserProfile(Model model, @PathVariable String nickname) {
         User requestedUser = userRepository.findByNickname(nickname);
 
         if (requestedUser == null) {

@@ -2,7 +2,7 @@ package com.intransition.labs.editor;
 
 import java.util.Set;
 
-class JsonCreative {
+public class JsonCreative {
 
     private String name;
 

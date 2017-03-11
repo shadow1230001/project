@@ -1,6 +1,6 @@
 'use strict'
 
-var editor = angular.module('admin', [])
+var editor = angular.module('dto', [])
     .controller('adminController', function ($scope, $http) {
 
         $scope.isProfilesLoaded = false;
@@ -29,7 +29,7 @@ var editor = angular.module('admin', [])
         }
 
         $scope.loadProfiles = function () {
-            $http.get('/admin/profiles?page=' + $scope.currentProfilesPage).then(function successCallback(response) {
+            $http.get('/dto/profiles?page=' + $scope.currentProfilesPage).then(function successCallback(response) {
                 $scope.profiles = {};
                 $scope.profiles = response.data;
                 $scope.isProfileLoaded = true;

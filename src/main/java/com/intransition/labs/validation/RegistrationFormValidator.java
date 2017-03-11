@@ -1,7 +1,7 @@
 package com.intransition.labs.validation;
 
 import com.intransition.labs.domain.user.User;
-import com.intransition.labs.form.SignupForm;
+import com.intransition.labs.dto.SignupForm;
 import com.intransition.labs.service.UserService;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
