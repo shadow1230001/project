@@ -21,16 +21,16 @@ public interface AwardService {
 
     /**
      *
-     * @param awardsToSort 
+     * @param awardsToSort
      * @return
      */
     List<Award> sortAwardsByAwardedTime(Set<Award> awardsToSort);
 
     /**
      * 
-     * @param user
-     * @param type
-     * @return
+     * @param user the user for whom returned Award
+     * @param type Award type
+     * @return Users Award returns
      */
 
     Award giveUserAward(User user, AwardType type);

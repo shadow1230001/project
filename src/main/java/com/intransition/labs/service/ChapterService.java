@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 public interface ChapterService {
+    /**
+     *
+     * @param chaptersToSort collection Chapter
+     * @return collection Chapter sorted by Order
+     */
 
     List<Chapter> sortChaptersByOrder(Set<Chapter> chaptersToSort);
 

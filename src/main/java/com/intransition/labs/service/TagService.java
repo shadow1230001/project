@@ -15,6 +15,12 @@ public interface TagService {
      */
     List<Tag> getAllTags();
 
+    /**
+     *
+     * @param name namee type String
+     * @return collection Stting
+     */
+
     List<String> autocomplete(String name);
 
 }
