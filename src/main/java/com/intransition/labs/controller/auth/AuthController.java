@@ -2,6 +2,7 @@ package com.intransition.labs.controller.auth;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.intransition.labs.dto.VKResponse;
 import com.intransition.labs.service.SecurityService;
 import com.intransition.labs.service.UserService;
 import com.intransition.labs.service.auth.AuthService;
@@ -63,7 +64,7 @@ public class AuthController {
         String appSecret = env.getProperty("spring.social.vk.app-secret");
         String redirectURI = env.getProperty("spring.social.vk.redirect-uri");
 
-        String oauth = "https://oauth.vk.com/access_token?client_id=" + appId + "&client_secret=" + appSecret + "&redirect_uri=" + redirectURI + "&code=" + code;
+        String oauth = "url" + appId + "&client_secret=" + appSecret + "&redirect_uri=" + redirectURI + "&code=" + code;
 
         TransportClient transportClient = new HttpTransportClient();
         String response = transportClient.post(oauth).getContent();
@@ -86,8 +87,6 @@ public class AuthController {
 
         securityService.authorize(email, null);
 
-        //TODO
-        //authServiceVK.authorize(userName, password);
 
         return "redirect:/";
     }
@@ -101,7 +100,6 @@ public class AuthController {
     @GetMapping(value = "/auth/twitter")
     public String authViaTwitter(@RequestParam(name = "appp-id") String userName, @RequestParam(name = "app-secret") String password) throws ApiException, ClientException, IOException, JsonSyntaxException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
 
-//        authServiceTwitter.authorize(appId, appKey);
         return "redirect:https://twitter.com/vlyubin?lang=ru";
     }
 
@@ -124,16 +122,6 @@ public class AuthController {
         return authResponse;
     }
 
-    private class VKResponse {
 
-        public String access_token;
-
-        public int expires_in;
-
-        public int user_id;
-
-        public String email;
-
-    }
 
 }

@@ -97,9 +97,6 @@ public class SettingsController {
             return "personal/settings";
         }
 
-        // return "personal/settings";
-
-        //save settings
         return "redirect:../";
     }
 

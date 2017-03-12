@@ -1,9 +1,3 @@
-/*
- * angular-elastic v2.5.1
- * (c) 2014 Monospaced http://monospaced.com
- * License: MIT
- */
-
 if (typeof module !== 'undefined' &&
     typeof exports !== 'undefined' &&
     module.exports === exports) {
@@ -26,23 +20,23 @@ angular.module('monospaced.elastic', [])
                 restrict: 'A, C',
                 link: function (scope, element, attrs, ngModel) {
 
-                    // cache a reference to the DOM element
+
                     var ta = element[0],
                         $ta = element;
 
-                    // ensure the element is a textarea, and browser is capable
+
                     if (ta.nodeName !== 'TEXTAREA' || !$window.getComputedStyle) {
                         return;
                     }
 
-                    // set these properties before measuring dimensions
+
                     $ta.css({
                         'overflow': 'hidden',
                         'overflow-y': 'hidden',
                         'word-wrap': 'break-word'
                     });
 
-                    // force text reflow
+
                     var text = ta.value;
                     ta.value = '';
                     ta.value = text;
@@ -88,20 +82,20 @@ angular.module('monospaced.elastic', [])
                             'word-spacing',
                             'text-indent'];
 
-                    // exit if elastic already applied (or is the mirror element)
+
                     if ($ta.data('elastic')) {
                         return;
                     }
 
-                    // Opera returns max-height of -1 if not set
+
                     maxHeight = maxHeight && maxHeight > 0 ? maxHeight : 9e4;
 
-                    // append mirror to the DOM
+
                     if (mirror.parentNode !== document.body) {
                         angular.element(document.body).append(mirror);
                     }
 
-                    // set resize and apply elastic
+
                     $ta.css({
                         'resize': (resize === 'none' || resize === 'vertical') ? 'none' : 'horizontal'
                     }).data('elastic', true);

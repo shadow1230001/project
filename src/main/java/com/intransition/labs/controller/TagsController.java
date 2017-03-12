@@ -17,44 +17,36 @@ import java.util.stream.Collectors;
 
 @Controller
 public class TagsController {
-	
-	@Autowired
-	private TagService tagService;
 
-	@Autowired
-	private CreativeService creativeService;
+    @Autowired
+    private TagService tagService;
 
-	@RequestMapping( value = "/tags/{tag}", method = RequestMethod.GET )
-	public String searchByTag(@PageableDefault( size = 5 ) Pageable pageable, @PathVariable( value = "tag") String tag, Model model ) {
-		//return "nu tut karoch poisk po tegy.";
-		//model.addAttribute( "tags", tagService.getAllTags() );
+    @Autowired
+    private CreativeService creativeService;
 
-		//Page<Creative> creatives = creativeService.findAllByOrderByCreatedDesc(pageable);
+    @RequestMapping(value = "/tags/{tag}", method = RequestMethod.GET)
+    public String searchByTag(@PageableDefault(size = 5) Pageable pageable, @PathVariable(value = "tag") String tag, Model model) {
+        List<Creative> creatives = creativeService.findAllByOrderByCreatedDesc(pageable).getContent().parallelStream().filter(creative -> {
+            return containsTag(creative.getTags(), tag);
+        }).collect(Collectors.toList());
+        model.addAttribute("creatives", creatives);
+
+        return "searchbytag";
+    }
+
+    private boolean containsTag(Set<Tag> tags, String tag) {
+        for (Tag tg : tags) {
+            if (tg.getName().equalsIgnoreCase(tag)) return true;
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/tags", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    List<String> autocomplete(@RequestBody String tag) {
+        return tagService.autocomplete(tag);
+    }
 
 
-		//creatives.
-		List<Creative> creatives = creativeService.findAllByOrderByCreatedDesc(pageable).getContent().parallelStream().filter(creative -> {
-			return containsTag(creative.getTags(), tag);
-		}).collect(Collectors.toList());
-		//Page<Creative> creatives = creativeService.findAllByTagsInTagsOrderByEditedDesc(tag, pageable);
-
-		//pageable.
-		model.addAttribute( "creatives", creatives );
-
-		return "searchbytag";
-	}
-
-	private boolean containsTag(Set<Tag> tags, String tag ) {
-		for( Tag tg : tags ) {
-			if( tg.getName().equalsIgnoreCase(tag) ) return true;
-		}
-		return false;
-	}
-
-	@RequestMapping( value = "/tags", method = RequestMethod.POST )
-	public @ResponseBody List<String> autocomplete( @RequestBody String tag ) {
-		return tagService.autocomplete( tag );
-	}
-	
-	
 }

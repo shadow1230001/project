@@ -7,6 +7,9 @@ import com.intransition.labs.dto.SettingsForm;
 
 import java.util.List;
 
+/**
+ * Settings service.
+ */
 public interface SettingsService {
 
     SettingsForm getSettingsForm();

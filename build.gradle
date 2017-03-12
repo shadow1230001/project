@@ -35,25 +35,19 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-validation')
-	compile('org.springframework.boot:spring-boot-starter-web') {
-		exclude module: "spring-boot-starter-tomcat"
-		exclude module: "spring-boot-starter-logging"
-		exclude module: "logback-classic"
-	}
-	compile("org.springframework.boot:spring-boot-starter-actuator") {
-		exclude module: "logback-classic"
-	}
+	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('net.sourceforge.nekohtml:nekohtml')
-    compile('io.github.jpenren:thymeleaf-spring-data-dialect:2.1.1')
+	compile('io.github.jpenren:thymeleaf-spring-data-dialect:2.1.1')
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
 	compile('commons-validator:commons-validator:1.4.0')
 	compile('org.pegdown:pegdown:1.6.0')
 	compile ('com.vk.api:sdk:0.3.5')
+
 	/*compile group: 'org.hibernate', name: 'hibernate-search-engine', version: '5.7.0.Final'
 	compile group: 'org.webjars', name: 'angular-elastic', version: '2.4.2'*/
+//	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('mysql:mysql-connector-java')
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
-	testCompile 'junit:junit:4.12'
 
 }

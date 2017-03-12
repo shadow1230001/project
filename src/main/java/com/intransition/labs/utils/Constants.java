@@ -1,7 +1,7 @@
 package com.intransition.labs.utils;
 
 /**
- * Created by User on 11.03.2017.
+ * set fields with constants
  */
 public class Constants {
 

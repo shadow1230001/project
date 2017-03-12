@@ -6,6 +6,9 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Size;
 
+/*
+ * For for sign up
+ */
 public class SignupForm {
 
     @Email

@@ -29,7 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
-                //.antMatchers("/add**").permitAll()
                 .antMatchers("/personal/**").not().anonymous()
                 .antMatchers("/dto/**").access("hasAuthority('ADMIN')")
                 .and()
@@ -53,7 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .tokenValiditySeconds(86400)
                 .rememberMeParameter("remember-me")
                 .tokenRepository(persistentTokenRepository());
-        //.exceptionHandling()http;
     }
 
     @Autowired

@@ -13,6 +13,7 @@ spring:
     vk:
       app-id: 5897956
       app-secret: efh7hv1pHE2CNuYc5jfz
+      url: https://oauth.vk.com/access_token
       redirect-uri: http://localhost:8080/auth/vk
 # SQL
   datasource:

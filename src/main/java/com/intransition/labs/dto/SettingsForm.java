@@ -6,6 +6,10 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Size;
 
+/**
+ * Form for settings
+ */
+
 public class SettingsForm {
 
     @Email

@@ -15,7 +15,7 @@ var editor = angular.module('editor', ['ngTagsInput', "ng-showdown", 'monospaced
         };
 
         $scope.postCreative = function () {
-            // if( !$scope.validate() ) return;
+
 
             var res = $http.post("/personal/editor/create", angular.toJson($scope.creative));
 
@@ -51,14 +51,6 @@ var editor = angular.module('editor', ['ngTagsInput', "ng-showdown", 'monospaced
             var id = getMaxChapterID();
             $scope.debug = id;
             $scope.newChapter.id = id + 1;
-
-            // $scope.newChapter.content = 'Enter your [Markdown][1] here.' +
-            // '\n' +
-            // '\n- *first*' +
-            // '\n- **second**' +
-            // '\n- third' +
-            // '\n' +
-            // '\n[1]:  ';
 
 
             $scope.chapters[id] = $scope.newChapter;

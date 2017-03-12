@@ -19,7 +19,4 @@ public interface CreativeService {
 
     Page<Creative> findAllByOrderByEditedDesc(Pageable pageable);
 
-    //Page<Creative> findAllByTagsInTagsOrderByEditedDesc(String tag, Pageable pageable);
-    //findByAgeIn()
-
 }
