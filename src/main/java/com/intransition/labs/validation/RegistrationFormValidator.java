@@ -75,4 +75,7 @@ public class RegistrationFormValidator implements Validator {
     }
 
 
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }
